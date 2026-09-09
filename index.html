@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Amai Ven — digital artist, illustrator and character designer">
+<title>Amai Ven — artist portfolio</title>
+
+<!-- ==========================================================
+     ⭐ ТУТ ТЫ МЕНЯЕШЬ СВОИ ДАННЫЕ ⭐
+     В коде ниже я пометил все места комментариями:
+     [ТВОЁ ИМЯ], [ТВОЯ КАРТИНКА], [ТВОЯ ССЫЛКА], [ТВОЙ EMAIL]
+     ========================================================== -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fredoka:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg:#f5f2ec;
+  --paper:#fbfaf7;
+  --ink:#39333d;
+  --muted:#8c8590;
+  --pink:#c98fb9;
+  --pink-soft:#ead4e4;
+  --lav:#d9d4e1;
+  --line:rgba(70,62,75,.16);
+  --shadow:0 18px 50px rgba(62,53,67,.10);
+
+  /* 🎨 ЦВЕТА САЙТА — можешь менять здесь */
+  /* --bg = основной фон */
+  /* --ink = основной тёмный текст */
+  /* --pink = розовый акцент */
+  /* --pink-soft = светло-розовый */
+}
+
+* { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; }
+body {
+  min-width:320px;
+  color:var(--ink);
+  background:
+    radial-gradient(circle at 15% 15%, rgba(201,143,185,.12), transparent 25rem),
+    radial-gradient(circle at 90% 80%, rgba(176,166,199,.14), transparent 28rem),
+    var(--bg);
+  font-family:"Fredoka",sans-serif;
+  overflow-x:hidden;
+}
+body::before {
+  content:"";
+  position:fixed; inset:0; pointer-events:none; z-index:0;
+  opacity:.42;
+  background-image:
+    linear-gradient(rgba(80,72,85,.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(80,72,85,.055) 1px, transparent 1px);
+  background-size:48px 48px;
+}
+a { color:inherit; text-decoration:none; }
+button { font:inherit; }
+
+.cursor-dot {
+  width:10px; height:10px; border-radius:50%;
+  background:var(--pink);
+  position:fixed; left:0; top:0; pointer-events:none;
+  z-index:9999; transform:translate(-50%,-50%);
+  transition:transform .18s ease, width .2s ease, height .2s ease;
+  mix-blend-mode:multiply;
+}
+.cursor-dot.big { width:28px; height:28px; }
+
+.site {
+  position:relative; z-index:1; width:min(1180px, calc(100% - 36px));
+  margin:auto;
+}
+
+.topbar {
+  position:sticky; top:18px; z-index:50;
+  display:flex; justify-content:space-between; align-items:center;
+  margin:18px 0 28px; padding:12px 14px 12px 18px;
+  border:1px solid var(--line); border-radius:999px;
+  background:rgba(251,250,247,.78); backdrop-filter:blur(18px);
+  box-shadow:0 8px 30px rgba(60,50,65,.06);
+}
+.logo { font-size:20px; font-weight:600; letter-spacing:-.03em; }
+.logo span { color:var(--pink); }
+.nav { display:flex; gap:6px; }
+.nav a {
+  padding:8px 12px; border-radius:999px; font-size:12px;
+  color:var(--muted); transition:.25s ease;
+}
+.nav a:hover { background:var(--pink-soft); color:var(--ink); }
+
+.hero {
+  min-height:calc(100vh - 95px); display:grid;
+  grid-template-columns:1.15fr .85fr; gap:50px; align-items:center;
+  padding:55px 5vw 90px;
+}
+.hero-copy { position:relative; }
+.kicker {
+  display:inline-flex; align-items:center; gap:9px;
+  font:500 11px "DM Mono",monospace; letter-spacing:.08em;
+  text-transform:uppercase; color:var(--muted); margin-bottom:25px;
+}
+.kicker::before {
+  content:""; width:28px; height:1px; background:var(--pink);
+}
+.hero h1 {
+  font-size:clamp(72px, 12vw, 150px); line-height:.82;
+  letter-spacing:-.075em; font-weight:600;
+}
+.hero h1 em { color:var(--pink); font-style:normal; }
+.hero-text {
+  max-width:520px; margin:32px 0 26px;
+  font-size:18px; line-height:1.45; color:#6f6872;
+}
+.hero-actions { display:flex; gap:10px; flex-wrap:wrap; }
+.pill {
+  display:inline-flex; align-items:center; gap:10px;
+  padding:13px 18px; border-radius:999px;
+  border:1px solid var(--line); background:var(--paper);
+  font-size:13px; transition:.25s ease;
+}
+.pill.primary { background:var(--ink); color:white; border-color:var(--ink); }
+.pill:hover { transform:translateY(-3px); box-shadow:var(--shadow); }
+.hero-art {
+  position:relative; display:grid; place-items:center;
+}
+.art-card {
+  width:min(360px,100%); aspect-ratio:1/1.08;
+  border-radius:46% 54% 52% 48% / 43% 45% 55% 57%;
+  padding:12px; background:linear-gradient(145deg,var(--paper),var(--lav));
+  box-shadow:var(--shadow); transform:rotate(3deg);
+}
+.art-card img {
+  width:100%; height:100%; object-fit:cover;
+  border-radius:inherit; display:block;
+}
+.sticker {
+  position:absolute; right:-8px; bottom:25px;
+  width:104px; height:104px; display:grid; place-items:center;
+  border-radius:50%; background:var(--pink-soft);
+  border:1px solid rgba(90,70,90,.18);
+  transform:rotate(12deg); text-align:center;
+  font-size:12px; line-height:1.15;
+}
+.sticker::after {
+  content:"✦"; position:absolute; top:-16px; left:-16px;
+  font-size:28px; color:var(--pink);
+}
+
+.section { padding:95px 0; }
+.section-head {
+  display:flex; justify-content:space-between; align-items:end;
+  margin-bottom:28px; padding-bottom:13px; border-bottom:1px solid var(--line);
+}
+.section-head h2 { font-size:34px; letter-spacing:-.04em; }
+.section-head span { font:11px "DM Mono",monospace; color:var(--muted); }
+
+.works {
+  display:grid; grid-template-columns:repeat(12,1fr); gap:16px;
+}
+.work {
+  position:relative; overflow:hidden; border-radius:22px;
+  background:var(--paper); border:1px solid var(--line);
+  box-shadow:0 10px 28px rgba(60,50,65,.06);
+}
+.work:nth-child(1) { grid-column:span 7; }
+.work:nth-child(2) { grid-column:span 5; }
+.work:nth-child(3) { grid-column:span 4; }
+.work:nth-child(4) { grid-column:span 8; }
+.work:nth-child(5) { grid-column:span 6; }
+.work:nth-child(6) { grid-column:span 6; }
+.work img {
+  width:100%; aspect-ratio:1/1; object-fit:cover;
+  display:block; transition:transform .7s cubic-bezier(.2,.7,.2,1), filter .5s ease;
+}
+.work:nth-child(1) img,.work:nth-child(4) img { aspect-ratio:16/10; }
+.work:hover img { transform:scale(1.045); filter:brightness(.72); }
+.work-info {
+  position:absolute; inset:auto 14px 14px 14px;
+  display:flex; justify-content:space-between; align-items:center;
+  padding:11px 13px; border-radius:14px;
+  color:white; background:rgba(38,34,41,.74); backdrop-filter:blur(10px);
+  opacity:0; transform:translateY(10px); transition:.3s ease;
+}
+.work:hover .work-info { opacity:1; transform:none; }
+.work-info small { font:10px "DM Mono",monospace; opacity:.72; }
+
+.about-grid {
+  display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:start;
+}
+.about-big {
+  font-size:clamp(32px,5vw,62px); line-height:1.02;
+  letter-spacing:-.055em;
+}
+.about-big span { color:var(--pink); }
+.about-copy {
+  padding:28px; border:1px solid var(--line); border-radius:26px;
+  background:rgba(251,250,247,.65); line-height:1.65; color:#706a73;
+}
+.about-copy p+p { margin-top:18px; }
+
+.social-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:10px; }
+.social {
+  min-height:110px; padding:16px; border:1px solid var(--line);
+  border-radius:20px; background:var(--paper);
+  display:flex; flex-direction:column; justify-content:space-between;
+  transition:.25s ease;
+}
+.social:hover { transform:translateY(-5px) rotate(-1deg); box-shadow:var(--shadow); }
+.social strong { font-size:20px; }
+.social span { font:10px "DM Mono",monospace; color:var(--muted); }
+
+.commission {
+  display:grid; grid-template-columns:1.1fr 2fr auto; gap:20px;
+  padding:22px 0; border-bottom:1px solid var(--line); align-items:center;
+}
+.commission:first-child { border-top:1px solid var(--line); }
+.commission-name { font-size:19px; }
+.commission-desc { color:#7c757f; font-size:13px; line-height:1.5; }
+.price { font:500 13px "DM Mono",monospace; white-space:nowrap; }
+.note { margin-top:20px; font-size:12px; color:var(--muted); }
+
+.contact {
+  position:relative; overflow:hidden; padding:70px 7vw;
+  border-radius:34px; background:var(--ink); color:white;
+}
+.contact::before {
+  content:""; position:absolute; width:330px; height:330px; border-radius:50%;
+  right:-90px; top:-120px; background:var(--pink); opacity:.22; filter:blur(4px);
+}
+.contact h2 {
+  position:relative; max-width:850px; font-size:clamp(54px,9vw,115px);
+  line-height:.82; letter-spacing:-.07em;
+}
+.contact h2 em { color:#e3a9cf; font-style:normal; }
+.contact-bottom {
+  position:relative; margin-top:55px; display:flex;
+  justify-content:space-between; gap:20px; align-items:end;
+}
+.email {
+  font-size:clamp(20px,3vw,36px); border-bottom:1px solid rgba(255,255,255,.45);
+}
+.contact-links { display:flex; gap:8px; flex-wrap:wrap; }
+.contact-links a {
+  padding:9px 12px; border:1px solid rgba(255,255,255,.22);
+  border-radius:999px; font-size:11px; color:#ddd5df;
+}
+.contact-links a:hover { background:white; color:var(--ink); }
+
+footer {
+  display:flex; justify-content:space-between; padding:28px 2px 35px;
+  color:var(--muted); font:10px "DM Mono",monospace;
+}
+
+.reveal { opacity:0; transform:translateY(24px); }
+.reveal.show { opacity:1; transform:none; transition:opacity .8s ease, transform .8s ease; }
+
+@media(max-width:800px){
+  .site { width:min(100% - 24px, 620px); }
+  .topbar { top:10px; margin-top:10px; }
+  .nav a { padding:7px 8px; font-size:10px; }
+  .hero { grid-template-columns:1fr; padding:45px 10px 70px; }
+  .hero-art { order:-1; }
+  .art-card { width:250px; }
+  .sticker { right:7%; }
+  .works { grid-template-columns:1fr 1fr; }
+  .work:nth-child(n) { grid-column:span 1; }
+  .work:nth-child(1),.work:nth-child(4) { grid-column:span 2; }
+  .about-grid { grid-template-columns:1fr; }
+  .social-grid { grid-template-columns:repeat(2,1fr); }
+  .social:last-child { grid-column:span 2; }
+  .commission { grid-template-columns:1fr auto; }
+  .commission-desc { grid-column:span 2; }
+  .contact-bottom { flex-direction:column; align-items:flex-start; }
+}
+@media(max-width:500px){
+  .nav a:nth-child(1),.nav a:nth-child(2) { display:none; }
+  .hero h1 { font-size:24vw; }
+  .hero-text { font-size:16px; }
+  .works { grid-template-columns:1fr; }
+  .work:nth-child(n) { grid-column:span 1; }
+  .work img,.work:nth-child(1) img,.work:nth-child(4) img { aspect-ratio:1/1.12; }
+  .work-info { opacity:1; transform:none; }
+  .social-grid { grid-template-columns:1fr 1fr; }
+  .social:last-child { grid-column:span 2; }
+  .section { padding:65px 0; }
+}
+@media(prefers-reduced-motion:reduce){
+  html { scroll-behavior:auto; }
+  *,*::before,*::after { animation:none!important; transition:none!important; }
+}
+</style>
+</head>
+
+<body>
+<div class="cursor-dot" aria-hidden="true"></div>
+
+<div class="site">
+<header class="topbar">
+  <a class="logo" href="#">Amai Ven<span>✦</span></a>
+  <nav class="nav">
+    <a href="#work">work</a>
+    <a href="#about">about</a>
+    <a href="#contact">contact</a>
+  </nav>
+</header>
+
+<main>
+<section class="hero">
+  <div class="hero-copy reveal">
+    <!-- ✏️ ТВОЯ ПРОФЕССИЯ / ПОДПИСЬ -->
+    <div class="kicker">digital artist · illustrator</div>
+    <!-- ✏️ ТВОЁ ИМЯ / ПСЕВДОНИМ -->
+    <h1>hi,<br><em>bunny</em> :3</h1>
+    <!-- ✏️ ТЕКСТ О СЕБЕ: напиши здесь 1–3 предложения -->
+    <p class="hero-text">
+      I create characters, illustrations and little worlds.
+      Welcome to my corner of the internet ♡
+    </p>
+    <div class="hero-actions">
+      <a class="pill primary" href="#work">see my art ↓</a>
+      <!-- 🔗 ТВОЯ ССЫЛКА: Telegram / email / Discord и т.д. -->
+      <a class="pill" href="https://www.instagram.com/amaiven_23/" target="_blank" rel="noopener">say hi →</a>
+    </div>
+  </div>
+
+  <div class="hero-art reveal">
+    <div class="art-card">
+      <!-- 🖼️ ТВОЯ КАРТИНКА: замени путь внутри src.
+         Например: src="images/my-art.jpg" -->
+      <img src="C:\Users\User\Pictures\IMG_3500 (2).PNG" alt="[ОПИСАНИЕ ТВОЕЙ КАРТИНКИ]">
+    </div>
+    <div class="sticker">made with<br>love ♡<br>and pixels</div>
+  </div>
+</section>
+
+<section id="work" class="section">
+  <div class="section-head reveal"><h2>selected works</h2><span>01 / portfolio</span></div>
+  <div class="works">
+    <!-- 🖼️ + 🔗 КАРТОЧКА "PORTFOLIO"
+         1) href="..." = куда ведёт картинка
+         2) src="..."  = файл картинки
+         3) <b>...</b> = название работы
+         4) <small>...</small> = категория -->
+    <a class="work reveal" href="https://portfolio.commishes.com/user/vena09/" target="_blank" rel="noopener">
+      <img src="C:\Users\User\Pictures\photo_2026-02-12_17-36-24.jpg" alt="[ОПИСАНИЕ РАБОТЫ]">
+      <div class="work-info"><b>portfolio</b><small>ILLUSTRATION ↗</small></div>
+    </a>
+   
+    <!-- 🖼️ + 🔗 КАРТОЧКА "CHARACTER DESIGN"
+         1) href="..." = куда ведёт картинка
+         2) src="..."  = файл картинки
+         3) <b>...</b> = название работы
+         4) <small>...</small> = категория -->
+    <a class="work reveal" href="https://portfolio.commishes.com/upload/show/1VD23/" target="_blank" rel="noopener">
+      <img src="C:\Users\User\Pictures\IMG_2480 (2).PNG" alt="DESIGN">
+      <div class="work-info"><b>character design</b><small>DESIGN ↗</small></div>
+    </a>
+    <!-- 🖼️ + 🔗 КАРТОЧКА "NSFW"
+         1) href="..." = куда ведёт картинка
+         2) src="..."  = файл картинки
+         3) <b>...</b> = название работы
+         4) <small>...</small> = категория -->
+    <a class="work reveal" href="https://drive.google.com/drive/folders/1mDSzxPV_h1H5WfDLGM_crDsXfci8NOLg?usp=sharing" target="_blank" rel="noopener">
+      <img src="C:\Users\User\Pictures\photo_2026-08-10_21-41-47.jpg" alt="NSFW">
+      <div class="work-info"><b>NSFW</b><small>NSFW ↗</small></div>
+    </a>
+  </div>
+</section>
+
+<section id="about" class="section">
+  <div class="section-head reveal"><h2>about me</h2><span>02 / hello</span></div>
+  <div class="about-grid">
+    <!-- ✏️ БОЛЬШОЙ ТЕКСТ О ТЕБЕ -->
+    <div class="about-big reveal">
+      drawing characters,<br>
+      building <span>stories,</span><br>
+      chasing tiny ideas.
+    </div>
+    <!-- ✏️ ТЕКСТ "ОБО МНЕ" -->
+    <div class="about-copy reveal">
+      <p>Hi! I'm Amai Ven — a digital artist who loves expressive characters, soft colours and atmospheric little scenes.</p>
+      <p>This page is a small collection of things I make and places where you can find me.</p>
+      <p>For commissions, collaborations or just a friendly hello, feel free to message me ♡</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head reveal"><h2>find me here</h2><span>03 / socials</span></div>
+  <div class="social-grid">
+    <!-- 🔗 ТВОЯ ССЫЛКА DISCORD -->
+    <a class="social reveal" href="https://discordapp.com/users/vena05128/" target="_blank" rel="noopener"><strong>◉</strong><span>discord ↗</span></a>
+    <!-- 🔗 ТВОЯ ССЫЛКА PATREON -->
+    <a class="social reveal" href="https://boosty.to/amai" target="_blank" rel="noopener"><strong>♡</strong><span>boosty ↗</span></a>
+    <!-- 🔗 ТВОЯ ССЫЛКА TIKTOK -->
+    <a class="social reveal" href="https://www.instagram.com/amaiven_23/" target="_blank" rel="noopener"><strong>♪</strong><span>Instagram ↗</span></a>
+  </div>
+</section>
+
+<section id="contact" class="contact reveal">
+  <h2>let's make<br>something <em>cute.</em></h2>
+  <div class="contact-bottom">
+    <!-- 📧 ТВОЙ EMAIL: замени оба места ниже -->
+    <a class="email" href="mailto:vena80160@gmail.com">vena80160@gmail.com</a>
+    <!-- 🔗 ССЫЛКИ В НИЖНЕМ CONTACT-БЛОКЕ: замени href на свои -->
+    <div class="contact-links">
+      <a href="https://www.instagram.com/amaiven_23/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://portfolio.commishes.com/user/vena09/" target="_blank" rel="noopener">Portfolio</a>
+      <a href="https://boosty.to/amai" target="_blank" rel="noopener">Support</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <!-- ✏️ ТВОЁ ИМЯ / ПСЕВДОНИМ -->
+  <span>© 2026 Amai Ven</span>
+  <span>made with ♡</span>
+</footer>
+</div>
+
+<script>
+const cursor = document.querySelector('.cursor-dot');
+window.addEventListener('pointermove', e => {
+  cursor.style.left = e.clientX + 'px';
+  cursor.style.top = e.clientY + 'px';
+});
+document.querySelectorAll('a,.work').forEach(el => {
+  el.addEventListener('mouseenter', () => cursor.classList.add('big'));
+  el.addEventListener('mouseleave', () => cursor.classList.remove('big'));
+});
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('show');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold:.12 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
